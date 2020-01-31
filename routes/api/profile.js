@@ -60,7 +60,8 @@ router.post(
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
-    if (req.body.gitusername) profileFields.gitusername = req.body.gitusername;
+    if (req.body.githubusername)
+      profileFields.githubusername = req.body.githubusername;
     // Skills - Spilt into array
     if (typeof req.body.skills !== "undefined") {
       profileFields.skills = req.body.skills.split(",");
@@ -88,7 +89,7 @@ router.post(
         // Check if handle exists
         Profile.findOne({ handle: profileFields.handle }).then(profile => {
           if (profile) {
-            errors.handle = "This handle already exists";
+            errors.handle = "That handle already exists";
             res.status(400).json(errors);
           }
 
