@@ -5,6 +5,7 @@ module.exports = function validatePostInput(data) {
   let errors = {};
 
   data.text = !isEmpty(data.text) ? data.text : "";
+  data.code = !isEmpty(data.code) ? data.code : "";
 
   if (Validator.isEmpty(data.text)) {
     errors.text = "Text is required";

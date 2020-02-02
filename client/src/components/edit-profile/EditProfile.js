@@ -20,7 +20,7 @@ class CreateProfile extends Component {
       location: "",
       status: "",
       skills: "",
-      githubusername: "",
+      gitusername: "",
       bio: "",
       twitter: "",
       facebook: "",
@@ -50,8 +50,8 @@ class CreateProfile extends Component {
       profile.company = !isEmpty(profile.company) ? profile.company : "";
       profile.website = !isEmpty(profile.website) ? profile.website : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
-      profile.githubusername = !isEmpty(profile.gitusername)
-        ? profile.githubname
+      profile.gitusername = !isEmpty(profile.gitusername)
+        ? profile.gitusername
         : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.social = !isEmpty(profile.social) ? profile.social : {};
@@ -79,7 +79,7 @@ class CreateProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: skillsComma,
-        githubusername: profile.githubusername,
+        gitusername: profile.gitusername,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
@@ -99,7 +99,7 @@ class CreateProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubusername: this.state.githubusername,
+      gitusername: this.state.gitusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -249,10 +249,10 @@ class CreateProfile extends Component {
                 />
                 <TextFieldGroup
                   placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
+                  name="gitusername"
+                  value={this.state.gitusername}
                   onChange={this.onChange}
-                  error={errors.githubusername}
+                  error={errors.gitusername}
                   info="Tell us your Github username so we can show other what you build"
                 />
                 <TextAreaFieldGroup

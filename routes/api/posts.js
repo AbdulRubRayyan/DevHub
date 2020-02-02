@@ -54,7 +54,7 @@ router.post(
       text: req.body.text,
       code: req.body.code,
       name: req.body.name,
-      avatar: req.body.name,
+      avatar: req.body.avatar,
       user: req.user.id
     });
 

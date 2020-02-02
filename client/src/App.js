@@ -7,6 +7,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { clearProfile } from "./actions/profileAction";
 import PrivateRoute from "./components/common/PrivateRoute";
+import Profile from "./components/profile/Profile";
 
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
@@ -19,6 +20,10 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-e/AddExperience";
 import AddEducation from "./components/add-e/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import NotFound from "./components/not-found/NotFound";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 //Check if logged in
 if (localStorage.jwtToken) {
@@ -47,6 +52,8 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
@@ -78,7 +85,15 @@ function App() {
                 component={AddEducation}
               />
             </Switch>
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Posts} />
+            </Switch>
+            <Route exact path="/not-found" component={NotFound} />
           </div>
+          <Switch>
+            <PrivateRoute exact path="/post/:id" component={Post} />
+          </Switch>
+          <Route exact path="/not-found" component={NotFound} />
         </div>
       </Router>
     </Provider>
