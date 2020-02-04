@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 import "./PostFull.css";
-
 import { deletePost, addLike, removeLike } from "../../actions/postAction";
+const reactStringReplace = require("react-string-replace");
 
 export class PostItem extends Component {
   onDeleteClick(id) {
@@ -31,6 +31,9 @@ export class PostItem extends Component {
 
   render() {
     const { post, auth } = this.props;
+    const tab = <h1>Hey</h1>;
+    console.log(tab);
+
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -48,6 +51,16 @@ export class PostItem extends Component {
           <div className="col-md-10">
             <h3>{post.title}</h3>
             <p className="lead">{post.text}</p>
+            <p class="post-code">
+              {post.code.split("\n").map((item, idx) => {
+                return (
+                  <pre class="code-display" key={idx}>
+                    {item}
+                    <br />
+                  </pre>
+                );
+              })}
+            </p>
 
             <button
               onClick={this.onLikeClick.bind(this, post._id)}
@@ -68,9 +81,9 @@ export class PostItem extends Component {
             >
               <i className="text-secondary fa fa-thumbs-down"></i>
             </button>
-            <Link to={`/post/${post._id}`} className="btn btn-light mr-1">
-              View Post
-            </Link>
+            {/* <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
+              Comments
+            </Link> */}
             {post.user === auth.user.id ? (
               <button
                 type="button"

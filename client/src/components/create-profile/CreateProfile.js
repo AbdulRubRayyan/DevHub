@@ -165,12 +165,12 @@ class CreateProfile extends Component {
                   info="What are you professionally?"
                 />
                 <TextFieldGroup
-                  placeholder="Company"
+                  placeholder="Company/School"
                   name="company"
                   value={this.state.company}
                   onChange={this.onChange}
                   error={errors.company}
-                  info="What company do you work for?"
+                  info="What company do you work for? Add a school if you are a student"
                 />
                 <TextFieldGroup
                   placeholder="Website"
@@ -196,14 +196,14 @@ class CreateProfile extends Component {
                   error={errors.skills}
                   info="Please use comma separated values"
                 />
-                <TextFieldGroup
+                {/* <TextFieldGroup
                   placeholder="Github Username"
                   name="gitusername"
                   value={this.state.gitusername}
                   onChange={this.onChange}
                   error={errors.gitusername}
                   info="Tell us your Github username so we can show other what you build"
-                />
+                /> */}
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"

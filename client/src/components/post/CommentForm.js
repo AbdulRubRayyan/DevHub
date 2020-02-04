@@ -9,7 +9,9 @@ class CommentForm extends Component {
     super(props);
     this.state = {
       text: "",
-      errors: {}
+      code: "",
+      errors: {},
+      displayCodeInput: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -30,12 +32,13 @@ class CommentForm extends Component {
 
     const newComment = {
       text: this.state.text,
+      code: this.state.code,
       name: user.name,
       avatar: user.avatar
     };
 
     this.props.addComment(postId, newComment);
-    this.setState({ text: "" });
+    this.setState({ text: "", code: "", errors: {} });
   }
 
   onChange(e) {
@@ -43,12 +46,29 @@ class CommentForm extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, displayCodeInput } = this.state;
+    let CodeInput;
+    if (displayCodeInput) {
+      CodeInput = (
+        <div>
+          <textarea
+            className="form-control form-control-lg mt-2"
+            placeholder="Add your code"
+            name="code"
+            value={this.state.code}
+            onChange={this.onChange}
+            errors={errors.code}
+            rows="7"
+            wrap="hard"
+          ></textarea>
+        </div>
+      );
+    }
 
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white">
+          <div className="card-header bg-dark text-white">
             Make a comment...
           </div>
           <div className="card-body">
@@ -61,6 +81,20 @@ class CommentForm extends Component {
                   onChange={this.onChange}
                   error={errors.text}
                 />
+                <div className="mb-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.setState(prevState => ({
+                        displayCodeInput: !prevState.displayCodeInput
+                      }));
+                    }}
+                    className="btn btn-light"
+                  >
+                    Add Code
+                  </button>
+                </div>
+                {CodeInput}
               </div>
               <button type="submit" className="btn btn-dark">
                 Submit

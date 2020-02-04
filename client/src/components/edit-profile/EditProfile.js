@@ -247,14 +247,14 @@ class CreateProfile extends Component {
                   error={errors.skills}
                   info="Please use comma separated values"
                 />
-                <TextFieldGroup
+                {/* <TextFieldGroup
                   placeholder="Github Username"
                   name="gitusername"
                   value={this.state.gitusername}
                   onChange={this.onChange}
                   error={errors.gitusername}
                   info="Tell us your Github username so we can show other what you build"
-                />
+                /> */}
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
